@@ -37,7 +37,15 @@ export default class HomePage extends Component {
             <div>
                 {this.state.render ? 
                 this.state.politicianContributors.map(p => {
-                    return <div>{p["@attributes"].cand_name}</div>
+                    return <div>
+                        <div>{p["@attributes"].cand_name}</div>
+                        <div>{p["contributor"].map((c, idx) => {
+                        return <div>
+                            <ul>{idx + 1}. {c["@attributes"].org_name}</ul>
+                            <ul>${c["@attributes"].total}</ul>
+                            </div>
+                })}</div>
+                        </div>
                 }) : <div>LOADING</div>}
             </div>
         )
